@@ -28,9 +28,18 @@ const page = "https://next.truecaller.com";
             .get('.User__Avatar > svg')
             .click()
         cy
+            .get('[href="#toggleDarkTheme"]')
+            .click()
+        cy
             .get('main').should(($el) => {
                 expect($el).to.have.css('color', colorOfDarkTheme)//color of night theme
             })
-        //another assert that makes sure that theme image changes
+        cy
+            .get('[href="#toggleDarkTheme"]')
+            .click()
+        cy
+            .get('main').should(($el) => {
+                expect($el).to.have.css('color', colorOfLightTheme)//color of night theme
+            })
     })
 })
