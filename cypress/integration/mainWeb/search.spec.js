@@ -61,7 +61,7 @@ describe('Search test cases', () => {
             .should('eq', 'https://www.truecaller.com/search/se/735358210')
     })
 
-    it('Search number while logged in(captcha blocked)', () => {
+    /*it('Search number while logged in(captcha blocked)', () => {
         cy
             .get('.cookie-banner-close')
             .click({force: true})
@@ -90,7 +90,7 @@ describe('Search test cases', () => {
         cy
             .get('.ProfileRecaptcha > :nth-child(2)')
             .should('be.visible')
-    })
+    })*/
 
     // it('All actions with found contact', () => {
     //     cy
