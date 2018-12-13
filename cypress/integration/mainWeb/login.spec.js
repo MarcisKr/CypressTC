@@ -61,8 +61,8 @@ describe('Login test cases', () => {
             .click({force: true})
         cy
             .window()
-            .then(win => {
-                localStorage.truecallerStore = '{"user":{"redirect":"/","accessToken":"a1w1I------wudVhAbkywXt9H0ncTcX9zvab0Pc6HmIbk2_kNbNDAIxx24iexrnC","enhancedSearch":true,"email":"cypresstruecaller@gmail.com","name":"Cypress Automation","image":"https://lh5.googleusercontent.com/-3H-92sybLgA/AAAAAAAAAAI/AAAAAAAAAAA/ABtNlbCkgd5OXmdQBercdCthWDeE-nVi9g/mo/photo.jpg?sz=50","country":"lv","ipCountry":"lv","ipCountryDetected":true,"searchCountry":"lv","unlistCountry":"lv","searchQuery":"","searchHistory":[],"device":{"isMobile":false,"isIOS":false,"isAndroidOS":false}},"showCookieBanner":true}'
+            .then(win => {//cypresstruecaller@gmail.com
+                localStorage.truecallerStore = '{"user":{"redirect":"/","accessToken":"a1w1J------wudVhMGZD9T-f_e5xmeLwW8RgtTZY2Z5CNb6udBSb8wjaF4m8c836","enhancedSearch":true,"email":"cypresstruecaller@gmail.com","name":"Cypress Automation","image":"https://lh5.googleusercontent.com/-3H-92sybLgA/AAAAAAAAAAI/AAAAAAAAAAA/AGDgw-ii93ed_hnvQDAnroGmOQo0gJFjog/mo/photo.jpg?sz=50","country":"lv","ipCountry":"lv","ipCountryDetected":true,"searchCountry":"lv","unlistCountry":"lv","searchQuery":"","searchHistory":[],"device":{"isMobile":false,"isIOS":false,"isAndroidOS":false}},"showCookieBanner":true}'
             })
         cy
             .reload()
@@ -111,7 +111,7 @@ describe('Login test cases', () => {
         cy
             .window()
             .then(win => {
-                localStorage.truecallerStore = '{"user":{"redirect":"/","accessToken":"a1w1I------wudVhAbkywXt9H0ncTcX9zvab0Pc6HmIbk2_kNbNDAIxx24iexrnC","enhancedSearch":true,"email":"cypresstruecaller@gmail.com","name":"Cypress Automation","image":"https://lh5.googleusercontent.com/-3H-92sybLgA/AAAAAAAAAAI/AAAAAAAAAAA/ABtNlbCkgd5OXmdQBercdCthWDeE-nVi9g/mo/photo.jpg?sz=50","country":"lv","ipCountry":"lv","ipCountryDetected":true,"searchCountry":"lv","unlistCountry":"lv","searchQuery":"","searchHistory":[],"device":{"isMobile":false,"isIOS":false,"isAndroidOS":false}},"showCookieBanner":true}'
+                localStorage.truecallerStore = '{"user":{"redirect":"/","accessToken":"a1w1J------wudVhMGZD9T-f_e5xmeLwW8RgtTZY2Z5CNb6udBSb8wjaF4m8c836","enhancedSearch":true,"email":"cypresstruecaller@gmail.com","name":"Cypress Automation","image":"https://lh5.googleusercontent.com/-3H-92sybLgA/AAAAAAAAAAI/AAAAAAAAAAA/AGDgw-ii93ed_hnvQDAnroGmOQo0gJFjog/mo/photo.jpg?sz=50","country":"lv","ipCountry":"lv","ipCountryDetected":true,"searchCountry":"lv","unlistCountry":"lv","searchQuery":"","searchHistory":[],"device":{"isMobile":false,"isIOS":false,"isAndroidOS":false}},"showCookieBanner":true}'
             })
         cy
             .reload()
