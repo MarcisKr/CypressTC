@@ -1,4 +1,4 @@
-describe('Early automation of new page..', () => {
+describe('main page tests', () => {
 const page = "https://next.truecaller.com";
     beforeEach(function () {
         cy
