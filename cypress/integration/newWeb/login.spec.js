@@ -1,4 +1,5 @@
 describe('Enhanced search', () => {
+
     const page = "https://next.truecaller.com";
 
     beforeEach(function () {
