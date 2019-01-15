@@ -1,0 +1,3 @@
+#!/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+npx cypress run --record --key 6a01d35d-d3b4-417c-8f06-7c2d3a56e89a --browser chrome
