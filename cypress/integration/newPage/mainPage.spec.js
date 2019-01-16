@@ -42,4 +42,8 @@ const page = "https://next.truecaller.com";
                 expect($el).to.have.css('color', colorOfLightTheme)//color of night theme
             })
     })
+
+    it('Download', () => {
+
+    })
 })
