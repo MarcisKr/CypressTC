@@ -23,11 +23,8 @@ describe('Navigation test cases', () => {
 
     it('Navigate to Downloads page', () => {
         cy
-            .get('.cookie-banner-close')
-            .click({force: true})
-        cy
             .get('.TopNav__Download')
-            .click()
+            .click({force: true})
         cy
             .get('.dl-dialog-cancel')
             .click()

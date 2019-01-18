@@ -1,5 +1,7 @@
 {
   "baseUrl": "https://www.truecaller.com",
   "chromeWebSecurity": false,
-  "projectId": "53587m"
+  "projectId": "53587m",
+  "defaultCommandTimeout": 45000,
+  "responseTimeout": 60000
 }
