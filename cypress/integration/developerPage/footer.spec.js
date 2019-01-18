@@ -6,7 +6,6 @@ beforeEach(function () {
 })
 
 describe('Developers section', () => {
-
     it('Open for mobile apps link', () => {
         cy
             .get('.text-grey > [href="/for-mobile-apps"]')
