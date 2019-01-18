@@ -5,7 +5,7 @@ beforeEach(function () {
         .visit(page)
 })
 
-/*describe('Developers section', () => {
+describe('Developers section', () => {
 
     it('Open for mobile apps link', () => {
         cy
@@ -60,7 +60,7 @@ beforeEach(function () {
             .url()
             .should('eq', 'https://developer.truecaller.com/contact')
     })
-})*/
+})
 
 describe('Documentation section', () => {
     it('Android SDK link', () => {
