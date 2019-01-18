@@ -5,7 +5,7 @@ beforeEach(function () {
         .visit(page)
 })
 
-describe('Developers section', () => {
+/*describe('Developers section', () => {
 
     it('Open for mobile apps link', () => {
         cy
@@ -59,5 +59,61 @@ describe('Developers section', () => {
         cy
             .url()
             .should('eq', 'https://developer.truecaller.com/contact')
+    })
+})*/
+
+describe('Documentation section', () => {
+    it('Android SDK link', () => {
+        cy
+            .get('[href="https://github.com/truecaller/android-sdk"]')
+            .should('be.visible')
+            .and('have.attr', 'href', 'https://github.com/truecaller/android-sdk')
+            .and('have.attr', 'target', '_blank')
+            .and('have.attr', 'rel', 'noopener')
+    })
+
+    it('iOS SDK link', () => {
+        cy
+            .get('[href="https://github.com/truecaller/ios-sdk"]')
+            .should('be.visible')
+            .and('have.attr', 'href', 'https://github.com/truecaller/ios-sdk')
+            .and('have.attr', 'target', '_blank')
+            .and('have.attr', 'rel', 'noopener')
+    })
+
+    it('Web login link', () => {
+        cy
+            .get('[href="https://github.com/truecaller/web-login"]')
+            .should('be.visible')
+            .and('have.attr', 'href', 'https://github.com/truecaller/web-login')
+            .and('have.attr', 'target', '_blank')
+            .and('have.attr', 'rel', 'noopener')
+    })
+
+    it('React native apps link', () => {
+        cy
+            .get('[href="https://github.com/truecaller/react-native-sdk"]')
+            .should('be.visible')
+            .and('have.attr', 'href', 'https://github.com/truecaller/react-native-sdk')
+            .and('have.attr', 'target', '_blank')
+            .and('have.attr', 'rel', 'noopener')
+    })
+})
+
+describe('SDK section', () => {
+    it('Android SDK link', () => {
+        cy
+            .get('[href="https://developer.truecaller.com/truecallersdk-android-v07.zip"]')
+            .should('be.visible')
+            .and('have.attr', 'href', 'https://developer.truecaller.com/truecallersdk-android-v07.zip')
+            .and('have.attr', 'target', '_blank')
+    })
+
+    it('iOS SDK link', () => {
+        cy
+            .get('[href="https://github.com/truecaller/ios-sdk/releases"]')
+            .should('be.visible')
+            .and('have.attr', 'href', 'https://github.com/truecaller/ios-sdk/releases')
+            .and('have.attr', 'target', '_blank')
     })
 })
