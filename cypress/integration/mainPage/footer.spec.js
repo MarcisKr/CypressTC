@@ -151,9 +151,15 @@ describe('Footer contractual links', () => {
         cy
             .get('span > [href="/directory"]')
             .should('be.visible')
+            .and('have.attr', 'href', '/directory')
         cy
-            .request('https://www.truecaller.com/directory')
-            .its('body').should('include', '<a href="/directory/spammers" class="ListItem"><div class="ListItem__Icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"></path></svg></div><div class="ListItem__Info"><div>Spammers</div><div>Truecallers top reported spammers</div></div></a>')
+            .visit('https://www.truecaller.com/directory')  
+        cy 
+            .get(':nth-child(2) > .ListItem')
+            .should('be.visible')
+        cy
+            .get('[href="/block-spam-calls"]')
+            .should('be.visible')
     })
 
     it('User can open and see "Responsible disclosure" from footer', () => {
