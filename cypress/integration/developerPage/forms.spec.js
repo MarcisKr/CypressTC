@@ -67,12 +67,27 @@ describe('Login form', () => {
 
     it('Open password reset link', () => {
         cy
-            .visit('https://developer.truecaller.com/login')
+            .visit(page + '/login')
         cy
             .get('.flex > .link')
             .click()
         cy
             .url()
             .should('eq', page + '/forgot-password')
+    })
+})
+
+describe('Passwor reset form', () => {
+    it('Form field validation', () => {
+        cy
+            .visit(page + '/forgot-password')
+        cy
+            .get('#username')
+            .should('be.visible')
+        cy
+            .get('.submit')
+            .should('be.visible')
+            .and('be.disabled')
+            .and('have.text', 'Reset password')
     })
 })
