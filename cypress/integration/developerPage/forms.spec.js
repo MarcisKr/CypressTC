@@ -1,15 +1,9 @@
 const page = "https://developer.truecaller.com";
 
-beforeEach(function () {
-    cy
-        .visit(page)
-})
-
 describe('Sign up form', () => {
     it('Form fields validation', () => {
         cy
-            .get('.menu > [href="/sign-up"]')
-            .click()
+            .visit(page + '/sign-up')
         cy
             .get('.text-3xl')
             .should('be.visible')
@@ -41,13 +35,22 @@ describe('Sign up form', () => {
             .and('be.disabled')
             .and('have.text', 'Register')
     })
+
+    it('License agreement link validation', () => {
+        cy
+            .visit(page + '/sign-up')
+        cy
+            .get('.flex > .text-xs > .link')
+            .should('have.attr', 'href', '/20181004-truecaller-sdk-product-license-agreement.pdf')
+            .and('have.class', 'link')
+            .and('have.attr', 'target', '__blank')
+    })
 })
 
 describe('Login form', () => {
     it('Form fields validation', () => {
         cy
-            .get('.menu > [href="/login"]')
-            .click()
+            .visit(page + '/login')
         cy
             .get('.text-3xl')
             .should('be.visible')
