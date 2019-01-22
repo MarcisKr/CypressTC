@@ -6,7 +6,29 @@ beforeEach(() => {
 })
 
 describe('Footer contractual links', () => {
-    
+    it('Terms of service link', () => {
+        cy
+            .get('[href="https://www.truecaller.com/terms-of-service"]')
+            .should('be.visible')
+            .and('have.text', 'Terms of service')
+            .and('have.attr', 'onclick')
+    })
+
+    it('Privacy policy link', () => {
+        cy
+            .get('[href="https://www.truecaller.com/privacy-policy"]')
+            .should('be.visible')
+            .and('have.text', 'Privacy policy')
+            .and('have.attr', 'onclick')
+    })
+
+    it('Cookie policy link', () => {
+        cy
+            .get('span > [href="https://www.truecaller.com/cookie-policy"]')
+            .should('be.visible')
+            .and('have.text', 'Cookie policy')
+            .and('have.attr', 'onclick')
+    })
 })
 
 describe('Footer social media buttons', () => {
