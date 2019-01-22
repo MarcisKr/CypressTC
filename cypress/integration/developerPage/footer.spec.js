@@ -116,3 +116,32 @@ describe('SDK section', () => {
             .and('have.attr', 'target', '_blank')
     })
 })
+
+describe('Footer contractual links', () => {
+    it('Terms of service link', () => {
+        cy
+            .get('[href="https://www.truecaller.com/terms-of-service"]')
+            .should('be.visible')
+            .and('have.text', 'Terms of service')
+            .and('have.attr', 'rel', 'noopener')
+            .and('have.attr', 'target', '_blank')
+    })
+
+    it('Privacy policy link', () => {
+        cy
+            .get('[href="https://www.truecaller.com/privacy-policy"]')
+            .should('be.visible')
+            .and('have.text', 'Privacy policy')
+            .and('have.attr', 'rel', 'noopener')
+            .and('have.attr', 'target', '_blank')
+    })
+
+    it('Cookie policy link', () => {
+        cy
+            .get(':nth-child(2) > [href="https://www.truecaller.com/cookie-policy"]')
+            .should('be.visible')
+            .and('have.text', 'Cookie policy')
+            .and('have.attr', 'rel', 'noopener')
+            .and('have.attr', 'target', '_blank')
+    })
+})
