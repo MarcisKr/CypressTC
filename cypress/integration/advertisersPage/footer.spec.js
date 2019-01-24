@@ -5,6 +5,16 @@ beforeEach(() => {
         .visit(page)
 })
 
+describe('Footer misc links', () => {
+    it('Navigate back to main page', () => {
+        cy
+            .get('.footer__logo > svg')
+            .parent()
+            .should('have.attr', 'href', 'https://www.truecaller.com')
+            .and('be.visible')
+    })
+})
+
 describe('Footer contractual links', () => {
     it('Terms of service link', () => {
         cy
