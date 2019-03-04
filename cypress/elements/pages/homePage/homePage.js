@@ -1,4 +1,4 @@
-//import header
+import header from './header';
 //import footer
 
 class homePage{
