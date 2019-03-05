@@ -3,7 +3,7 @@ class header {
     getButtonHome(){
         return cy.get('.router-link-active > svg');
     }
-
+  
     getButtonGetapp(){
         return cy.get('.TopNav__Download');
     }

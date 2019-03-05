@@ -3,6 +3,7 @@ import header from './header';
 
 class homePage{
     constructor(){
+
         this.header = new header();
     }
     //elements
