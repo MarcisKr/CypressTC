@@ -3,13 +3,11 @@ class header {
     getButtonHome(){
         return cy.get('.router-link-active > svg');
     }
-    //methods
-    navigateToMainPage(){
-        this.getButtonHome.click({force: true});
-        cy
-            .url()
-            .should('eq', 'https://www.truecaller.com/');
+  
+    getButtonGetapp(){
+        return cy.get('.TopNav__Download');
     }
+    //methods
 }
 
 export default header;

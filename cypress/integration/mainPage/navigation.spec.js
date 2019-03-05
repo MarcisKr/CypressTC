@@ -1,3 +1,7 @@
+import homePage from '../../elements/pages/homePage/homePage';
+import aboutPage from '../../elements/pages/homePage/aboutPage';
+import downloadPage from '../../elements/pages/homePage/downloadPage';
+
 describe('Navigation test cases', () => {
     beforeEach(function () {
         cy
@@ -5,26 +9,16 @@ describe('Navigation test cases', () => {
     })
 
     it('Clicking truecaller logo brings me home', () => {
-        cy
-            .get('.cookie-banner-close')
-            .click({force: true})
-        cy
-            .visit('/about')
-        cy
-            .url()
-            .should('eq', 'https://www.truecaller.com/about')
-        cy
-            .get('.router-link-active > svg')
-            .click()
-        cy
-            .url()
-            .should('eq', 'https://www.truecaller.com/')
+        const home = new homePage();
+        const about = new aboutPage();
+        
+        about.visit();
+        home.navigateToMainPage();
     })
 
     it('Navigate to Downloads page', () => {
-        cy
-            .get('.TopNav__Download')
-            .click({force: true})
+        const home = new homePage();
+        
         cy
             .get('.dl-dialog-cancel')
             .click()
