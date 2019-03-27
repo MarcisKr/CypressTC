@@ -7,6 +7,10 @@ class header {
     getButtonGetapp(){
         return cy.get('.TopNav__Download');
     }
+
+    getButtonSignin(){
+        return cy.get('.TopNav__Link');
+    }
     //methods
 }
 
