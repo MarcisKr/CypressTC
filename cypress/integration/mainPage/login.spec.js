@@ -31,28 +31,28 @@ describe('Login test cases', () => {
     })
 
     it('login and logout with google(mocked) account', () => {
-        cy
+        /*cy
             .get('.cookie-banner-close')
             .click({force: true})
         cy
             .window()
             .then(win => {//cypresstruecaller@gmail.com
                 localStorage.truecallerStore = '{"user":{"redirect":"/","accessToken":"a1w1J------wudVhMGZD9T-f_e5xmeLwW8RgtTZY2Z5CNb6udBSb8wjaF4m8c836","enhancedSearch":true,"email":"cypresstruecaller@gmail.com","name":"Cypress Automation","image":"https://lh5.googleusercontent.com/-3H-92sybLgA/AAAAAAAAAAI/AAAAAAAAAAA/AGDgw-ii93ed_hnvQDAnroGmOQo0gJFjog/mo/photo.jpg?sz=50","country":"lv","ipCountry":"lv","ipCountryDetected":true,"searchCountry":"lv","unlistCountry":"lv","searchQuery":"","searchHistory":[],"device":{"isMobile":false,"isIOS":false,"isAndroidOS":false}},"showCookieBanner":true}'
-            })
-        cy
-            .reload()
-        cy
+            })*/
+        const home = new homePage();
+
+        //home.closeCookieBanner();
+        home.setUserGoogle();
+        home.reload();
+        /*cy
             .get('.TopNav__UserAvatar')
             .should('be.visible')
             .click({force: true})
-            .log("**User has been logged IN.**")   
-        cy
-            .get('.TopNav__UserMenuSignOut')
-            .click({force: true})
-        cy
-            .get('.TopNav__Link')
-            .should('be.visible')
-            .log("**User has been logged OUT.**")
+            .log("**User has been logged IN.**")*/
+        home.validateButtonUserAvatar();
+        home.openUserMenu();
+        home.clickSignout();
+        home.validateButtonSignin();
     })
 
     it('log in after searching for a number(captcha blocked)', () => {

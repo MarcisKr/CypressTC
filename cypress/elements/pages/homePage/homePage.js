@@ -25,9 +25,26 @@ class homePage{
     getButtonEnhancedInfo(){
         return cy.get('[src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQzLjIgKDM5MDY5KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5pbmZvLW91dGxpbmU8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iQXJ0Ym9hcmQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xOTYuMDAwMDAwLCAtNTcuMDAwMDAwKSIgZmlsbD0iI0IwQkVDNSI+CiAgICAgICAgICAgIDxnIGlkPSJpbmZvLW91dGxpbmUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5Ni4wMDAwMDAsIDU3LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTksMTUgTDExLDE1IEwxMSw5IEw5LDkgTDksMTUgTDksMTUgWiBNMTAsMCBDNC41LDAgMCw0LjUgMCwxMCBDMCwxNS41IDQuNSwyMCAxMCwyMCBDMTUuNSwyMCAyMCwxNS41IDIwLDEwIEMyMCw0LjUgMTUuNSwwIDEwLDAgTDEwLDAgWiBNMTAsMTggQzUuNiwxOCAyLDE0LjQgMiwxMCBDMiw1LjYgNS42LDIgMTAsMiBDMTQuNCwyIDE4LDUuNiAxOCwxMCBDMTgsMTQuNCAxNC40LDE4IDEwLDE4IEwxMCwxOCBaIE05LDcgTDExLDcgTDExLDUgTDksNSBMOSw3IEw5LDcgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg=="]');
     }
+
+    getButtonCookieClose(){
+        return cy.get('.cookie-banner-close');
+    }
+
     //methods
     visit(){
         cy.visit("https://www.truecaller.com/");
+    }
+
+    reload(){
+        cy.reload();
+    }
+
+    setUserGoogle(){
+        //user - cypresstruecaller@gmail.com
+        const user = '{"user":{"redirect":"/","accessToken":"a1w1J------wudVhMGZD9T-f_e5xmeLwW8RgtTZY2Z5CNb6udBSb8wjaF4m8c836","enhancedSearch":true,"email":"cypresstruecaller@gmail.com","name":"Cypress Automation","image":"https://lh5.googleusercontent.com/-3H-92sybLgA/AAAAAAAAAAI/AAAAAAAAAAA/AGDgw-ii93ed_hnvQDAnroGmOQo0gJFjog/mo/photo.jpg?sz=50","country":"lv","ipCountry":"lv","ipCountryDetected":true,"searchCountry":"lv","unlistCountry":"lv","searchQuery":"","searchHistory":[],"device":{"isMobile":false,"isIOS":false,"isAndroidOS":false}},"showCookieBanner":true}';
+        cy.window().then(win => {
+            localStorage.truecallerStore = user;
+        })
     }
 
     navigateToMainPage(){
@@ -61,6 +78,22 @@ class homePage{
         const button = this.getButtonEnhancedInfo();
         button.click();
     }
+
+    closeCookieBanner(){
+        const button = this.getButtonCookieClose();
+        button.click({force: true});
+    }
+
+    openUserMenu(){
+        const button = this.header.getButtonAvatar();
+        button.click({force: true});
+    }
+    
+    clickSignout(){
+        const button = this.header.getButtonSignout();
+        button.click({force: true});
+    }
+
     //validation
     validateButtonDownload(){
         const linkVisited = 'https://play.google.com/store/apps/details?id=com.truecaller&referrer=utm_source%3Dtcweb&rdid=com.truecaller';
@@ -97,6 +130,16 @@ class homePage{
 
     validateTextEnhancedInfo(){
         cy.contains('By enabling Enhanced Search, your contacts are securely shared with Truecaller. This improves accuracy of your search results and helps improve the experience for millions of users around the world.').should('be.visible');
+    }
+
+    validateButtonUserAvatar(){
+        const button = this.header.getButtonAvatar();
+        button.should('be.visible').log("**User has been logged IN.**");
+    }
+
+    validateButtonSignin(){
+        const button = this.header.getButtonSignin();
+        button.should('be.visible').log("**User has been logged OUT.");
     }
 }  
 

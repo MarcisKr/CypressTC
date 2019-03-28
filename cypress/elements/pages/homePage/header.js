@@ -11,6 +11,14 @@ class header {
     getButtonSignin(){
         return cy.get('.TopNav__Link');
     }
+
+    getButtonAvatar(){
+        return cy.get('.TopNav__UserAvatar');
+    }
+
+    getButtonSignout(){
+        return cy.get('.TopNav__UserMenuSignOut');
+    }
     //methods
 }
 
