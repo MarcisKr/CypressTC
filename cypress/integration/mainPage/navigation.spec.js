@@ -3,11 +3,6 @@ import aboutPage from '../../elements/pages/homePage/aboutPage';
 import downloadPage from '../../elements/pages/homePage/downloadPage';
 
 describe('Navigation test cases', () => {
-    beforeEach(function () {
-        cy
-            .visit('/')
-    })
-
     it('Clicking truecaller logo brings me home', () => {
         const home = new homePage();
         const about = new aboutPage();
@@ -19,11 +14,7 @@ describe('Navigation test cases', () => {
     it('Navigate to Downloads page', () => {
         const home = new homePage();
         
-        cy
-            .get('.dl-dialog-cancel')
-            .click()
-        cy
-            .url()
-            .should('eq', 'https://www.truecaller.com/download')
+        home.visit();
+        home.navigateToDownloadPage();
     })
 })
