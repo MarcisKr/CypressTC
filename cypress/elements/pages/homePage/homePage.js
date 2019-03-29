@@ -30,6 +30,21 @@ class homePage{
         return cy.get('.cookie-banner-close');
     }
 
+    getPickerSearchCountry(){
+        return cy.get('select');
+    }
+
+    getFieldSearch(){
+        return cy.get('.searchbar__query');
+    }
+
+    getButtonSearchSubmit(){
+        return cy.get('.searchbar__submit')
+    }
+
+    getDivCaptcha(){
+        return cy.get('.ProfileRecaptcha > :nth-child(1)', {timeout: 10000, frequency: 100});
+    }
     //methods
     visit(){
         cy.visit("https://www.truecaller.com/");
@@ -64,7 +79,7 @@ class homePage{
         button.click({force: true});
     }
 
-    changeLoginCountry(country){
+    selectLoginCountry(country){
         const countryPicker = this.getPickerLoginCountry();
         countryPicker.select(country);
     }
@@ -94,7 +109,25 @@ class homePage{
         button.click({force: true});
     }
 
+    selectSearchCountry(country){
+        const countryPicker = this.getPickerSearchCountry();
+        countryPicker.select(country);
+    }
+
+    enterNumberInSearchbar(number){
+        const searchField = this.getFieldSearch();
+        searchField.type(number, { delay: 100 });
+    }
+
+    submitSearchNumber(){
+        const button = this.getButtonSearchSubmit();
+        button.click({force: true});
+    }
     //validation
+    validateURL(url){
+        cy.url().should('eq', url);
+    }
+
     validateButtonDownload(){
         const linkVisited = 'https://play.google.com/store/apps/details?id=com.truecaller&referrer=utm_source%3Dtcweb&rdid=com.truecaller';
         const button = this.getButtonDownloadNow();
@@ -140,6 +173,11 @@ class homePage{
     validateButtonSignin(){
         const button = this.header.getButtonSignin();
         button.should('be.visible').log("**User has been logged OUT.");
+    }
+
+    validateCaptcha(){
+        const div = this.getDivCaptcha();
+        div.should('be.visible');
     }
 }  
 
