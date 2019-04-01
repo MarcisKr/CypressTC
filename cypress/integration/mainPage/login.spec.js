@@ -2,11 +2,6 @@ import homePage from '../../elements/pages/homePage/homePage';
 
 describe('Login test cases', () => {
 
-    beforeEach(function () {
-        cy
-            .visit('/')
-    })
-
     it('check and uncheck enhanced search', () => {
         const home = new homePage();
         let country = 'Afghanistan';
