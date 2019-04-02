@@ -46,6 +46,10 @@ class homePage{
     getDivCaptcha(){
         return cy.get('.ProfileRecaptcha > :nth-child(1)', {timeout: 10000, frequency: 100});
     }
+
+    getButtonSearchClear(){
+        return cy.get('.searchbar__clear');
+    }
     //methods
     visit(){
         cy.visit("https://www.truecaller.com/");
@@ -124,6 +128,11 @@ class homePage{
         const button = this.getButtonSearchSubmit();
         button.click({force: true});
     }
+
+    clearSearchField(){
+        const button = this.getButtonSearchClear();
+        button.click();
+    }
     //validation
     validateURL(url){
         cy.url().should('eq', url);
@@ -179,6 +188,16 @@ class homePage{
     validateCaptcha(){
         const div = this.getDivCaptcha();
         div.should('be.visible');
+    }
+
+    validateFieldSearchEmpty(){
+        const field = this.getFieldSearch();
+        field.should('not.have.value');
+    }
+
+    validateButtonSubmitDisabled(){
+        const button = this.getButtonSearchSubmit();
+        button.should('have.attr', 'disabled', 'disabled');
     }
 }  
 

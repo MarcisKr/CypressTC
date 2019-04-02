@@ -1,3 +1,5 @@
+import homePage from '../../elements/pages/homePage/homePage';
+
 describe('Search test cases', () => {
     beforeEach(function () {
         cy
@@ -5,36 +7,28 @@ describe('Search test cases', () => {
     })
 
     it('Number can be removed with "x" from search', () => {
-        cy
-            .get('.cookie-banner-close')
-            .click({force: true})
-        cy
-            .get('select')
-            .select('se')
-        cy
-            .get('.searchbar__query')
-            .type('735358210', { delay: 100 })
-        cy
-            .get('.searchbar__clear')
-            .click()
-        cy
-            .get('.searchbar__query')
-            .should('not.have.value', '735358210')
+        const home = new homePage();
+
+        home.visit();
+        home.closeCookieBanner();
+        const country = 'se';
+        home.selectSearchCountry(country);
+        const number = '735358210';
+        home.enterNumberInSearchbar(number);
+        home.clearSearchField();
+        home.validateFieldSearchEmpty();
     })
 
     it('Can not commit search if letters are entered', () => {
-        cy
-            .get('.cookie-banner-close')
-            .click({force: true})
-        cy
-            .get('select')
-            .select('se')
-        cy
-            .get('.searchbar__query')
-            .type('qwerty', { delay: 100 })
-        cy
-            .get('.searchbar__submit')
-            .should('have.attr', 'disabled', 'disabled')
+        const home = new homePage();
+
+        home.visit();
+        home.closeCookieBanner();
+        const country = 'se';
+        home.selectSearchCountry(country);
+        const symbols = 'qwerty';
+        home.enterNumberInSearchbar(symbols);
+        home.validateButtonSubmitDisabled();
     })
 
     it('Search number while logged out', () => {
