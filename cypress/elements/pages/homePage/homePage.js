@@ -40,11 +40,15 @@ class homePage{
     }
 
     getButtonSearchSubmit(){
-        return cy.get('.searchbar__submit')
+        return cy.get('.searchbar__submit');
     }
 
     getDivCaptcha(){
         return cy.get('.ProfileRecaptcha > :nth-child(1)', {timeout: 10000, frequency: 100});
+    }
+
+    getDivLogoutSearch(){
+        return cy.get('.ProfileHeader > h3');
     }
 
     getButtonSearchClear(){
@@ -198,6 +202,11 @@ class homePage{
     validateButtonSubmitDisabled(){
         const button = this.getButtonSearchSubmit();
         button.should('have.attr', 'disabled', 'disabled');
+    }
+
+    validateLogedOutSearch(){
+        const div = this.getDivLogoutSearch();
+        div.should('have.text', 'You need to sign in to view this result');
     }
 }  
 

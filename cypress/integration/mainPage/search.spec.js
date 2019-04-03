@@ -32,27 +32,18 @@ describe('Search test cases', () => {
     })
 
     it('Search number while logged out', () => {
-        cy
-            .get('.cookie-banner-close')
-            .click({force: true})
-        cy
-            .get('select')
-            .select('se')
-        cy
-            .get('.searchbar__query')
-            .type('735358210', { delay: 100 })
-        cy
-            .get('.searchbar__submit')
-            .click()
-        cy
-            .get('.ProfileHeader > h3')
-            .should('have.text', 'You need to sign in to view this result')
-        cy
-            .get('.ProfileHeader > .ProfileSignIn')
-            .should('be.visible')
-        cy
-            .url()
-            .should('eq', 'https://www.truecaller.com/search/se/735358210')
+        const home = new homePage();
+
+        home.visit();
+        home.closeCookieBanner();
+        const country = 'se';
+        home.selectSearchCountry(country);
+        const number = '735358210';
+        home.enterNumberInSearchbar(number);
+        home.submitSearchNumber();
+        home.validateLogedOutSearch();
+        const url = 'https://www.truecaller.com/search/se/735358210';
+        home.validateURL(url);
     })
 
     /*it('Search number while logged in(captcha blocked)', () => {
