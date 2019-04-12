@@ -3,5 +3,10 @@
   "chromeWebSecurity": false,
   "projectId": "53587m",
   "defaultCommandTimeout": 45000,
-  "responseTimeout": 60000
+  "responseTimeout": 60000,
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "results/cypress-report.xml",
+    "toConsole": true
+  }
 }
