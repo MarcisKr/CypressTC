@@ -3,5 +3,11 @@
   "chromeWebSecurity": false,
   "projectId": "53587m",
   "defaultCommandTimeout": 45000,
-  "responseTimeout": 60000
+  "responseTimeout": 60000,
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "overwrite": false,
+    "html": false,
+    "json": true
+  }
 }
