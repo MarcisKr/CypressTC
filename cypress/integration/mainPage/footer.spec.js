@@ -238,7 +238,6 @@ describe('Footer social media buttons', () => {
             .get('#app > div.footer > div > div.footer-top > div.footer-social > div:nth-child(6) > a')
             .should('be.visible')
             .and('have.attr', 'href', 'https://www.linkedin.com/company/true-software-scandinavia-ab')
-            .and('have.attr', 'target', '_blank')
         cy
             .get('#app > div.footer > div > div.footer-top > div.footer-social > div:nth-child(6) > a > img')
             .should('have.attr', 'src', 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNiAzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+aWNfbGlua2VkaW48L3RpdGxlPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTE4IDM2QzggMzYgMCAyOCAwIDE4UzggMCAxOCAwczE4IDggMTggMTgtOCAxOC0xOCAxOHptLTguNS05LjJoNFYxNS42aC00djExLjJ6bTItMTYuNWMtMS40IDAtMi4zLjgtMi4zIDIgMCAxIDEgMS44IDIuMiAxLjggMS40IDAgMi4zLS43IDIuMy0xLjggMC0xLTEtMi0yLjItMnptMTYuMyAxMGMwLTMuMy0yLTUtNC42LTUtMiAwLTMgMS0zLjYgMnYtMS43aC00djExLjJoNHYtNi4zLTFjLjQtLjUgMS0xLjIgMi4yLTEuMiAxLjQgMCAyIDEgMiAyLjV2Nmg0di02LjR6bS04LjItM3oiIGZpbGw9IiNGRkYiLz48cGF0aCBkPSJNMCAwaDM2djM2SDB6Ii8+PC9nPjwvc3ZnPg==')
