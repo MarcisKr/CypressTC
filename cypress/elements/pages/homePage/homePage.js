@@ -72,9 +72,10 @@ class homePage{
     }
 
     navigateToMainPage(){
-        const link = this.header.getButtonHome();
-        link.click({force: true});
-        cy.url().should('eq', "https://www.truecaller.com/");
+        this.header.navigateToMainPage();
+        // const link = this.header.getButtonHome();
+        // link.click({force: true});
+        // cy.url().should('eq', "https://www.truecaller.com/");
     }
 
     navigateToDownloadPage(){

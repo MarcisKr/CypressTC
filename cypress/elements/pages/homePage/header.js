@@ -20,6 +20,11 @@ class header {
         return cy.get('.TopNav__UserMenuSignOut');
     }
     //methods
+    navigateToMainPage(){
+        const link = this.getButtonHome();
+        link.click({force: true});
+        cy.url().should('eq', "https://www.truecaller.com/");
+    }
 }
 
 export default header;
