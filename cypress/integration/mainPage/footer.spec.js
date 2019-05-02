@@ -1,77 +1,69 @@
+import homePage from '../../elements/pages/homePage/homePage';
+
 describe('Footer "Product" section', () => {
-    beforeEach(function () {
-        cy
-            .visit('/')
-    })
 
     it('User can navigate using "Get the app" link', () => {
-        cy
-            .get(':nth-child(1) > [href="/truecaller"]')
-            .click()
-        cy
-            .url()
-            .should('eq', 'https://www.truecaller.com/truecaller')
+        const home = new homePage();
+
+        home.visit();
+        home.footer.openGetApp();
+        const url = 'https://www.truecaller.com/truecaller';
+        home.validateURL(url);
     })
 
     it('User can open "Support" from footer', () => {
-        cy
-            .get(':nth-child(1) > [href="https://support.truecaller.com"]')
-            .should('be.visible')
-            .and('have.attr', 'href', 'https://support.truecaller.com')
-            .and('have.attr', 'target', '_blank')
-            .and('have.attr', 'rel', 'noopener')
+        const home = new homePage();
+        
+        home.visit();
+        home.footer.validateLinkSupport();
     })
 })
 
 describe('Footer "Company" section', () => {
-    beforeEach(function () {
-        cy
-            .visit('/')
-    })
 
     it('User can navigate using "About" link', () => {
-        cy
-            .get('.footer-top > :nth-child(2) > [href="/about"]')
-            .click()
-        cy
-            .url()
-            .should('eq', 'https://www.truecaller.com/about')
+        const home = new homePage();
+        
+        home.visit();
+        home.footer.openAbout();
+        const url = 'https://www.truecaller.com/about';
+        home.validateURL(url);
     })
 
     it('User can navigate using "Press" link', () => {
-        cy
-            .get('.footer-top > :nth-child(2) > [href="/press"]')
-            .click()
-        cy
-            .url()
-            .should('eq', 'https://www.truecaller.com/press')
+        const home = new homePage();
+
+        home.visit();
+        home.footer.openPress();
+        const url = 'https://www.truecaller.com/press';
+        home.validateURL(url);
     })
 
     it('User can navigate using "Careers" link', () => {
-        cy
-            .get('.footer-top > :nth-child(2) > [href="/careers"]')
-            .click()
-        cy
-            .url()
-            .should('eq', 'https://www.truecaller.com/careers')
+        const home = new homePage();
+
+        home.visit();
+        home.footer.openCareers();
+        const url = 'https://www.truecaller.com/careers';
+        home.validateURL(url);
     })
 
     it('User can navigate using "Contact" link', () => {
-        cy
-            .get('.footer-top > :nth-child(2) > [href="/contact"]')
-            .click()
-        cy
-            .url()
-            .should('eq', 'https://www.truecaller.com/contact')
+        const home = new homePage();
+
+        home.visit();
+        home.footer.openContact();
+        const url = 'https://www.truecaller.com/contact';
+        home.validateURL(url);
     })
 
     it('User can navigate using "Impact" link', () => {
-        cy
-            .get('.footer-top > :nth-child(2) > [href="/impact"]')
-            .click()
-        cy
-            .url()
-            .should('eq', 'https://www.truecaller.com/impact')
+        const home = new homePage();
+        
+        home.visit();
+        home.footer.openImpact();
+        const url = 'https://www.truecaller.com/impact';
+        home.validateURL(url);
     })
 })
 

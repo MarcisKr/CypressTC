@@ -8,7 +8,7 @@ describe('Login test cases', () => {
         let checked = true;
 
         home.visit();
-        home.openSigninPopup();
+        home.header.openSigninPopup();
         home.selectLoginCountry(country);
         home.validateCheckEnhanced(checked);
         home.checkEnhancedSearch();
@@ -23,7 +23,7 @@ describe('Login test cases', () => {
         let country = 'Afghanistan';
         
         home.visit();
-        home.openSigninPopup();
+        home.header.openSigninPopup();
         home.selectLoginCountry(country);
         home.openEnhancedInfo();
         home.validateTextEnhancedInfo();
@@ -37,10 +37,10 @@ describe('Login test cases', () => {
         home.closeCookieBanner();
         home.setUserGoogle();
         home.reload();
-        home.validateButtonUserAvatar();
-        home.openUserMenu();
-        home.clickSignout();
-        home.validateButtonSignin();
+        home.header.validateButtonUserAvatar();
+        home.header.openUserMenu();
+        home.header.clickSignout();
+        home.header.validateButtonSignin();
     })
 
     it('log in after searching for a number(captcha blocked)', () => {
@@ -55,7 +55,7 @@ describe('Login test cases', () => {
         home.validateURL(address);
         home.setUserGoogle();
         home.reload();
-        home.validateButtonUserAvatar();
+        home.header.validateButtonUserAvatar();
         home.validateCaptcha();
     })
     
