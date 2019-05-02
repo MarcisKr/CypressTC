@@ -1,10 +1,10 @@
 import header from './header';
-//import footer
+import footer from './footer';
 
 class homePage{
     constructor(){
-
         this.header = new header();
+        this.footer = new footer();
     }
     //elements
     getButtonDownloadNow(){
@@ -54,6 +54,10 @@ class homePage{
     getButtonSearchClear(){
         return cy.get('.searchbar__clear');
     }
+    
+    getHeader(){
+        return cy.get('h1');
+    }
     //methods
     visit(){
         cy.visit("https://www.truecaller.com/");
@@ -73,20 +77,14 @@ class homePage{
 
     navigateToMainPage(){
         this.header.navigateToMainPage();
-        // const link = this.header.getButtonHome();
-        // link.click({force: true});
-        // cy.url().should('eq', "https://www.truecaller.com/");
     }
 
     navigateToDownloadPage(){
-        const button = this.header.getButtonGetapp();
-        button.click({force: true});
-        cy.url().should('eq', "https://www.truecaller.com/download");
-    }
+        this.header.navigateToDownloadPage();
+        }
 
     openSigninPopup(){
-        const button = this.header.getButtonSignin();
-        button.click({force: true});
+        this.header.openSigninPopup();
     }
 
     selectLoginCountry(country){
@@ -110,13 +108,11 @@ class homePage{
     }
 
     openUserMenu(){
-        const button = this.header.getButtonAvatar();
-        button.click({force: true});
+        this.header.openUserMenu();
     }
     
     clickSignout(){
-        const button = this.header.getButtonSignout();
-        button.click({force: true});
+        this.header.clickSignout();
     }
 
     selectSearchCountry(country){
@@ -137,6 +133,10 @@ class homePage{
     clearSearchField(){
         const button = this.getButtonSearchClear();
         button.click();
+    }
+
+    selectLanguageFooter(number){
+        this.footer.selectLanguage(number);
     }
     //validation
     validateURL(url){
@@ -181,13 +181,11 @@ class homePage{
     }
 
     validateButtonUserAvatar(){
-        const button = this.header.getButtonAvatar();
-        button.should('be.visible').log("**User has been logged IN.**");
+        this.header.validateButtonUserAvatar();
     }
 
     validateButtonSignin(){
-        const button = this.header.getButtonSignin();
-        button.should('be.visible').log("**User has been logged OUT.");
+        this.header.validateButtonSignin(); 
     }
 
     validateCaptcha(){
@@ -208,6 +206,14 @@ class homePage{
     validateLogedOutSearch(){
         const div = this.getDivLogoutSearch();
         div.should('have.text', 'You need to sign in to view this result');
+    }
+
+    validateLanguageFooter(number){
+        const header = this.getHeader();
+        if(number === 3){//FRENCH
+            header.should('have.text', 'Cherchez un numéro de téléphone');
+        }
+        else{cy.log('Missing language for header');}
     }
 }  
 
