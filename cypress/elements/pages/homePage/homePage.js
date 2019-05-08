@@ -75,18 +75,6 @@ class homePage{
         })
     }
 
-    navigateToMainPage(){
-        this.header.navigateToMainPage();
-    }
-
-    navigateToDownloadPage(){
-        this.header.navigateToDownloadPage();
-        }
-
-    openSigninPopup(){
-        this.header.openSigninPopup();
-    }
-
     selectLoginCountry(country){
         const countryPicker = this.getPickerLoginCountry();
         countryPicker.select(country);
@@ -105,14 +93,6 @@ class homePage{
     closeCookieBanner(){
         const button = this.getButtonCookieClose();
         button.click({force: true});
-    }
-
-    openUserMenu(){
-        this.header.openUserMenu();
-    }
-    
-    clickSignout(){
-        this.header.clickSignout();
     }
 
     selectSearchCountry(country){
@@ -178,14 +158,6 @@ class homePage{
 
     validateTextEnhancedInfo(){
         cy.contains('By enabling Enhanced Search, your contacts are securely shared with Truecaller. This improves accuracy of your search results and helps improve the experience for millions of users around the world.').should('be.visible');
-    }
-
-    validateButtonUserAvatar(){
-        this.header.validateButtonUserAvatar();
-    }
-
-    validateButtonSignin(){
-        this.header.validateButtonSignin(); 
     }
 
     validateCaptcha(){

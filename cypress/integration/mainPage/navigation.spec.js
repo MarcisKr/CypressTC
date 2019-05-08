@@ -8,13 +8,13 @@ describe('Navigation test cases', () => {
         const about = new aboutPage();
         
         about.visit();
-        home.navigateToMainPage();
+        home.header.navigateToMainPage();
     })
 
     it('Navigate to Downloads page', () => {
         const home = new homePage();
         
         home.visit();
-        home.navigateToDownloadPage();
+        home.header.navigateToDownloadPage();
     })
 })
