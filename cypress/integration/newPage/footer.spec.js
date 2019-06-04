@@ -17,7 +17,7 @@ describe("Footer contractual links", () => {
         const home = new homePage();
         const link = "https://www.truecaller.com/terms-of-service#row";
         home.visitURL();
-        home.footer.navigateTOS();
+        home.clickElement(home.footer.buttonTOS());
         home.validateURL(link);
     })
 
@@ -25,7 +25,7 @@ describe("Footer contractual links", () => {
         const home = new homePage();
         const link = "https://www.truecaller.com/privacy-policy#row";
         home.visitURL();
-        home.footer.navigatePP();
+        home.clickElement(home.footer.buttonPP());
         home.validateURL(link);
     })
 
@@ -33,7 +33,7 @@ describe("Footer contractual links", () => {
         const home = new homePage();
         const link = "https://www.truecaller.com/cookie-policy";
         home.visitURL();
-        home.footer.navigateCP();
+        home.clickElement(home.footer.buttonCP());
         home.validateURL(link);
     })
 
@@ -41,7 +41,7 @@ describe("Footer contractual links", () => {
         const home = new homePage();
         const link = "https://www.truecaller.com/directory";
         home.visitURL();
-        home.footer.navigateDirectory();
+        home.clickElement(home.footer.buttonDirectory());
         home.validateURL(link);
     })
 
@@ -49,7 +49,7 @@ describe("Footer contractual links", () => {
         const home = new homePage();
         const link = "https://www.truecaller.com/responsible-disclosure";
         home.visitURL();
-        home.footer.navigateRD();
+        home.clickElement(home.footer.buttonRD());
         home.validateURL(link);
     })
 })

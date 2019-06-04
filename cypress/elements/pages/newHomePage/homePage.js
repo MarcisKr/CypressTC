@@ -12,6 +12,10 @@ class homePage{
     visitURL(url = "https://www.truecaller.com"){
         cy.visit(url);
     }
+
+    clickElement(element){
+        element.click({force: true});
+    }
 //===================================  VALIDATION  ====================================
     validateURL(url){
         cy.url().should('eq', url);  

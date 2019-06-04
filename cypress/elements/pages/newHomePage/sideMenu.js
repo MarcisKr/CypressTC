@@ -79,40 +79,26 @@ class sideMenu {
         const buttons = [this.buttonMediaFirstD(), this.buttonMediaSecondD(), this.buttonMediaThirdD(), this.buttonMediaFourthD()];
         return buttons;
     }
+
+    buttonPremiumPremium(){
+        return cy.get('.border-brandColor');
+    }
+
+    buttonPremiumGold(){
+        return cy.get('.border-panelColor');
+    }
 //===================================  METHODS  =======================================
-    navigateSignIn(){
-        const button = this.buttonSignIn();
-        button.click();
-    }
-
-    navigatePremium(){
-        const button = this.buttonTCPremium();
-        button.click();
-    }
-
-    navigateAbout(){
-        const button = this.buttonAboutTC();
-        button.click();
-    }
-
-    navigateBoard(){
-        const button = this.buttonBoard();
-        button.click();
-    }
-
-    navigateMedia(){
-        const button = this.buttonMedia();
-        button.click();
-    }
-
-    navigateCareers(){
-        const button = this.buttonCareers();
-        button.click();
-    }
-
-    clickNightMode(){
-        const button = this.buttonNightMode();
-        button.click();
+    clickPremiumTab(tab){
+        let button = "";
+        if(tab === "premium"){
+            button = this.buttonPremiumPremium();
+            button.click();
+        } else if(tab === "gold"){
+            button = this.buttonPremiumGold();
+            button.click();
+        } else{
+            throw err;
+        }
     }
 //===================================  VALIDATION  =======================================
     validateBlog(){
