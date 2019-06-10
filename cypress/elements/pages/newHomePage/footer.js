@@ -31,30 +31,6 @@ class footer {
         return cy.get('[href="/responsible-disclosure"]');
     }
 //===================================  METHODS  =======================================
-    navigateTOS(){
-        const button = this.buttonTOS();
-        button.click({force: true});
-    }
-
-    navigatePP(){
-        const button = this.buttonPP();
-        button.click({force: true});
-    }
-
-    navigateCP(){
-        const button = this.buttonCP();
-        button.click({force: true});
-    }
-
-    navigateDirectory(){
-        const button = this.buttonDirectory();
-        button.click({force: true});
-    }
-
-    navigateRD(){
-        const button = this.buttonRD();
-        button.click({force: true});
-    }
 //===================================  VALIDATION  =======================================
     validateCaptchaPP(){
         const button = this.buttonCaptchaPP();

@@ -6,21 +6,23 @@ describe("Sidemenu", () => {
             const home = new homePage();
             const link = "https://www.truecaller.com/auth/sign-in";
             home.visitURL();
-            home.sideMenu.navigateSignIn();
+            home.clickElement(home.sideMenu.buttonSignIn());
             home.validateURL(link);
         });
 
         it("Validate Terms of service", () => {
             const home = new homePage();
-            home.sideMenu.navigateSignIn();
+            home.visitURL();
+            home.clickElement(home.sideMenu.buttonSignIn());
             home.sideMenu.validateSignInTOS();
         });
 
         it("Validate Privacy Policy", () => {
             const home = new homePage();
-            home.sideMenu.navigateSignIn();
+            home.visitURL();
+            home.clickElement(home.sideMenu.buttonSignIn());
             home.sideMenu.validateSignInPP();
-        })
+        });
     })
 
     describe("Truecaller premium", () => {
@@ -28,8 +30,21 @@ describe("Sidemenu", () => {
             const home = new homePage();
             const link = "https://www.truecaller.com/premium";
             home.visitURL();
-            home.sideMenu.navigatePremium();
+            home.clickElement(home.sideMenu.buttonTCPremium());
             home.validateURL(link);
+        });
+
+        it("Switch between premium and gold tabs", () => {
+            const home = new homePage;
+            const link = "https://www.truecaller.com/";
+            let tab = "gold";
+            home.visitURL();
+            home.clickElement(home.sideMenu.buttonTCPremium());
+            home.sideMenu.clickPremiumTab(tab);
+            home.validateURL(link + tab);
+            tab = "premium";
+            home.sideMenu.clickPremiumTab(tab);
+            home.validateURL(link + tab);
         });
     })
 
@@ -38,7 +53,7 @@ describe("Sidemenu", () => {
             const home = new homePage();
             const link = "https://www.truecaller.com/about";
             home.visitURL();
-            home.sideMenu.navigateAbout();
+            home.clickElement(home.sideMenu.buttonAboutTC());
             home.validateURL(link);
         });
     })
@@ -48,7 +63,7 @@ describe("Sidemenu", () => {
             const home = new homePage();
             const link = "https://www.truecaller.com/board-and-management";
             home.visitURL();
-            home.sideMenu.navigateBoard();
+            home.clickElement(home.sideMenu.buttonBoard());
             home.validateURL(link);
         });
     })
@@ -58,14 +73,22 @@ describe("Sidemenu", () => {
             const home = new homePage();
             const link = "https://www.truecaller.com/media-kit";
             home.visitURL();
-            home.sideMenu.navigateMedia();
+            home.clickElement(home.sideMenu.buttonMedia());
             home.validateURL(link);
         });
 
         it("Validate Download buttons", () => {
             const home = new homePage();
-            home.sideMenu.navigateMedia();
+            home.visitURL();
+            home.clickElement(home.sideMenu.buttonMedia());
             home.sideMenu.validateMediaDownloads();
+        });
+
+        it("Validate send mail button", () => {
+            const home = new homePage();
+            home.visitURL();
+            home.clickElement(home.sideMenu.buttonMedia());
+            home.sideMenu.validateMediaMail();
         });
     })
 
@@ -74,14 +97,23 @@ describe("Sidemenu", () => {
             const home = new homePage();
             const link = "https://www.truecaller.com/careers";
             home.visitURL();
-            home.sideMenu.navigateCareers();
+            home.clickElement(home.sideMenu.buttonCareers());
             home.validateURL(link);
+        });
+
+        it("View open positions", () => {
+            const home = new homePage();
+            home.visitURL();
+            home.clickElement(home.sideMenu.buttonCareers());
+            home.clickElement(home.sideMenu.buttonCareersPositions());
+            home.sideMenu.validateCareersPositions();
         });
     })
 
     describe("Blog", () => {
         it("Validate Blog", () => {
             const home = new homePage();
+            home.visitURL();
             home.sideMenu.validateBlog();
         });
     })
@@ -89,6 +121,7 @@ describe("Sidemenu", () => {
     describe("Advertisers", () => {
         it("Validate Advertisers", () => {
             const home = new homePage();
+            home.visitURL();
             home.sideMenu.validateAdvertisers();
         });
     })
@@ -96,6 +129,7 @@ describe("Sidemenu", () => {
     describe("Businesses", () => {
         it("Validate Businesses", () => {
             const home = new homePage();
+            home.visitURL();
             home.sideMenu.validateBusinesses();
         });
     })
@@ -103,6 +137,7 @@ describe("Sidemenu", () => {
     describe("Developers", () => {
         it("Validate Developers", () => {
             const home = new homePage();
+            home.visitURL();
             home.sideMenu.validateAdvertisers();
         });
     })
@@ -110,6 +145,7 @@ describe("Sidemenu", () => {
     describe("Support", () => {
         it("Validate Support", () => {
             const home = new homePage();
+            home.visitURL();
             home.sideMenu.validateSupport();
         });
     })
@@ -117,9 +153,45 @@ describe("Sidemenu", () => {
     describe("Theme", () => {
         it("Switch to dark theme and back", () => {
             const home = new homePage();
+            home.visitURL();
             home.sideMenu.validateTheme('light');
-            home.sideMenu.clickNightMode();
+            home.clickElement(home.sideMenu.buttonNightMode());
             home.sideMenu.validateTheme('dark');
         });
+    })
+
+    it("Validate Facebook button", () => {
+        const home = new homePage();
+        const link = "https://www.facebook.com/Truecaller/";
+        home.visitURL();
+        home.sideMenu.validateFooterButton(home.sideMenu.buttonFooterFB(), link);
+    })
+
+    it("Validate Twitter button", () => {
+        const home = new homePage();
+        const link = "https://twitter.com/truecaller";
+        home.visitURL();
+        home.sideMenu.validateFooterButton(home.sideMenu.buttonFooterTwitter(), link);
+    })
+
+    it("Validate Instagram button", () => {
+        const home = new homePage();
+        const link = "https://www.instagram.com/truecaller/";
+        home.visitURL();
+        home.sideMenu.validateFooterButton(home.sideMenu.buttonFooterInstagram(), link);
+    })
+
+    it("Validate Youtube button", () => {
+        const home = new homePage();
+        const link = "https://www.youtube.com/channel/UCtz1lDuJXH7ShIa6n4UAEAg";
+        home.visitURL();
+        home.sideMenu.validateFooterButton(home.sideMenu.buttonFooterYoutube(), link);
+    })
+
+    it("Validate Linkedin button", () => {
+        const home = new homePage();
+        const link = "https://www.linkedin.com/company/true-software-scandinavia-ab";
+        home.visitURL();
+        home.sideMenu.validateFooterButton(home.sideMenu.buttonFooterLinkedin(), link);
     })
 })

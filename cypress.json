@@ -9,5 +9,6 @@
     "overwrite": false,
     "html": false,
     "json": true
-  }
+  },
+    "viewport": "macbook-15"
 }
