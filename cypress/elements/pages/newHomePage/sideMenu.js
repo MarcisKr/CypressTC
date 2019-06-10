@@ -87,15 +87,43 @@ class sideMenu {
     buttonPremiumGold(){
         return cy.get('.border-panelColor');
     }
+
+    buttonMediaSendMail(){
+        return cy.get('.max-w-lg > a');
+    }
+
+    buttonCareersPositions(){
+        return cy.get('.relative > .btn');
+    }
+
+    buttonFooterFB(){
+        return cy.get('[aria-label="Truecaller on Facebook"]');
+    }
+
+    buttonFooterTwitter(){
+        return cy.get('[aria-label="Truecaller on Twitter"]');
+    }
+
+    buttonFooterInstagram(){
+        return cy.get('[aria-label="Truecaller on Instagram"]');
+    }
+
+    buttonFooterYoutube(){
+        return cy.get('[aria-label="Truecaller on YouTube"]');
+    }
+
+    buttonFooterLinkedin(){
+        return cy.get('[aria-label="Truecaller on LinkedIn"]');
+    }
 //===================================  METHODS  =======================================
     clickPremiumTab(tab){
         let button = "";
         if(tab === "premium"){
             button = this.buttonPremiumPremium();
-            button.click();
+            button.click({force: true});
         } else if(tab === "gold"){
             button = this.buttonPremiumGold();
-            button.click();
+            button.click({force: true});
         } else{
             throw err;
         }
@@ -181,6 +209,24 @@ class sideMenu {
             .and('have.attr', 'target', '_blank')
             .and('have.attr', 'href', link);
         }
+    }
+
+    validateMediaMail(){
+        const button = this.buttonMediaSendMail();
+        const link = "mailto:press@truecaller.com"
+        button.should('be.visible')
+        .and('have.attr', 'href', link);
+    }
+
+    validateCareersPositions(){
+        cy.get('#jobs').should('be.visible');
+        cy.get('.relative > .inline-block').should('be.visible');
+    }
+
+    validateFooterButton(button, link){
+        button.should('be.visible')
+        .and('have.attr', 'target', '_blank')
+        .and('have.attr', 'href', link);
     }
 }
 
