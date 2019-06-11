@@ -24,6 +24,42 @@ describe("Homepage tests", () => {
         home.validateDownloadPopup();
     })
 
+    describe("Feature buttons", () => {
+        it("Caller ID feature button opens information about it", () => {
+            const home = new homePage();
+            home.visitURL();
+            home.clickElement(home.buttonCallerID());
+            home.validateFeatureText("Caller ID");
+        })
+
+        it("Spam Blocking feature button opens information about it", () => {
+            const home = new homePage();
+            home.visitURL();
+            home.clickElement(home.buttonSpamProtection());
+            home.validateFeatureText("Spam Blocking");
+        })
+
+        it("Intelligent Dialer feature button opens information about it", () => {
+            const home = new homePage();
+            home.visitURL();
+            home.clickElement(home.buttonDialer());
+            home.validateFeatureText("Intelligent dialer");
+        })
+
+        it("Chat, SMS and Calls feature button opens information about it", () => {
+            const home = new homePage();
+            home.visitURL();
+            home.clickElement(home.buttonMessaging());
+            home.validateFeatureText("Chat, SMS and Calls");
+        })
+
+        it("Banking feature button opens information about it", () => {
+            const home = new homePage();
+            home.visitURL();
+            home.clickElement(home.buttonPay());
+            home.validateFeatureText("Banking");
+        })
+    })
     describe("Footer contractual links", () => {
         it("Recaptcha PP link validation", () => {
             const home = new homePage();
