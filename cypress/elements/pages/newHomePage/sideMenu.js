@@ -7,6 +7,14 @@ class sideMenu {
         return cy.get('[href="/auth/sign-in"]');
     }
 
+    buttonUserMenu(){
+        return cy.get('.user-nav-chevron');
+    }
+
+    buttonUserLogout(){
+        return cy.get('#side-nav > div.absolute.pin.overflow-y-scroll.pb-24 > div.w-full.user-nav.transition.user-nav--open > button');
+    }
+
     buttonTCPremium(){
         return cy.get('[href="/premium"]');
     }
@@ -227,6 +235,16 @@ class sideMenu {
         button.should('be.visible')
         .and('have.attr', 'target', '_blank')
         .and('have.attr', 'href', link);
+    }
+
+    validateUserLoggedIn(){
+        const button = this.buttonUserMenu();
+        button.should('be.visible');
+    }
+
+    validateUserLoggedOut(){
+        const button = this.buttonUserMenu();
+        button.should('not.be.visible');
     }
 }
 

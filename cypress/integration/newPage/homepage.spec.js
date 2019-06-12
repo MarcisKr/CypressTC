@@ -1,6 +1,42 @@
 import homePage from "../../elements/pages/newHomePage/homePage";
 
 describe("Homepage tests", () => {
+    describe("Login cases", () => {
+        it("I can log in as a google user", () => {
+            const home = new homePage();
+            home.visitURL();
+            home.clearSessionStorage();
+            home.setupGoogleUser();
+            home.visitURL();
+            home.sideMenu.validateUserLoggedIn();
+        })
+
+        it("I can log out as a google user", () => {
+            const home = new homePage();
+            home.visitURL();
+            home.clearSessionStorage();
+            home.setupGoogleUser();
+            home.visitURL();
+            home.sideMenu.validateUserLoggedIn();
+            home.clickElement(home.sideMenu.buttonUserMenu());
+            home.clickElement(home.sideMenu.buttonUserLogout());
+            home.sideMenu.validateUserLoggedOut();
+        })
+
+        it("Recaptcha error", () =>{
+            const home = new homePage();
+            home.visitURL();
+            home.clearSessionStorage();
+            home.setupGoogleUser();
+            home.visitURL();
+            home.sideMenu.validateUserLoggedIn();
+            home.enterSearchNumber("+37128338009");
+            home.clickElement(home.buttonSearch());
+            cy.wait(700);
+            home.validateRecaptchaError();
+        })
+    })
+
     it("Download options shown when opened from main page", () => {
         const home = new homePage();
         home.visitURL();
