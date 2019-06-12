@@ -38,6 +38,14 @@ class homePage{
     buttonPay(){
         return cy.get('[aria-label="Go to pay feature"] > svg');
     }
+
+    fieldSearch(){
+        return cy.get('.bg-searchBackgroundColor > .p-4');
+    }
+
+    buttonSearch(){
+        return cy.get('.w-12');
+    }
 //===================================  METHODS  =======================================
     visitURL(url = "https://www.truecaller.com"){
         cy.visit(url);
@@ -45,6 +53,22 @@ class homePage{
 
     clickElement(element){
         element.click({force: true});
+    }
+
+    setupGoogleUser(){
+        cy.window().then(win => {
+            localStorage.setItem('tc-store', '{"redirect":null,"overrides":{},"history":[{"name":"profile","params":{"countryCode":"lv","q":"28338009"}}],"showSpinner":false,"showDarkTheme":false,"showCookieMessage":false,"geoIpCountry":"lv","searchCountry":"lv","signInCountry":"lv","unlistCountry":"lv","user":{"name":"Cypress Automation","email":"cypresstruecaller@gmail.com","image":"https://lh5.googleusercontent.com/-3H-92sybLgA/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rfZipxBVK6rh5icI1sUbF9NMgEGlg/mo/photo.jpg","accessToken":"a1w1W------wudVhiz1lYcSm-UX8FWzRkmRMcLbWu8k-P3GNP2WwXmkmS5-c2Cg3","enhancedSearch":true}}');
+            localStorage.setItem('truecallerStore','{"user":{"redirect":"/search/lv/23882576","accessToken":null,"enhancedSearch":true,"email":null,"name":null,"image":null,"country":"lv","ipCountry":"lv","ipCountryDetected":true,"searchCountry":"lv","unlistCountry":"lv","searchQuery":"","searchHistory":[{"name":"profile-en","params":{"countryCode":"lv","q":"+37124330309"},"path":"/search/lv/+37124330309"},{"name":"profile-en","params":{"countryCode":"se","q":"+46735358210"},"path":"/search/se/+46735358210"},{"name":"profile-en","params":{"countryCode":"lv","q":"23882576"},"path":"/search/lv/23882576"}],"device":{"isMobile":false,"isIOS":false,"isAndroidOS":false}},"showCookieBanner":true}');
+        });
+    }
+
+    enterSearchNumber(number){
+        const searchField = this.fieldSearch();
+        searchField.type(number, { delay: 100 });
+    }
+
+    clearSessionStorage(){
+        sessionStorage.clear();
     }
 //===================================  VALIDATION  ====================================
     validateURL(url){
@@ -78,6 +102,10 @@ class homePage{
         else{
             err;
         }
+    }
+
+    validateRecaptchaError(){
+        cy.get('.profile > .w-full > .p-4').should('be.visible');
     }
 }
 

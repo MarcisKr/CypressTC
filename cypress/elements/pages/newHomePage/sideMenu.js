@@ -7,6 +7,26 @@ class sideMenu {
         return cy.get('[href="/auth/sign-in"]');
     }
 
+    buttonUserMenu(){
+        return cy.get('.user-nav-chevron');
+    }
+
+    buttonUserAccountPrivacy(){
+        return cy.get('#side-nav > div.absolute.pin.overflow-y-scroll.pb-24 > div.w-full.user-nav.transition.user-nav--open > a');
+    }
+
+    buttonUserSupportOne(){
+        return cy.get('p.mb-4 > a');
+    }
+
+    buttonUserSupportTwo(){
+        return cy.get(':nth-child(7) > a');
+    }
+
+    buttonUserLogout(){
+        return cy.get('#side-nav > div.absolute.pin.overflow-y-scroll.pb-24 > div.w-full.user-nav.transition.user-nav--open > button');
+    }
+
     buttonTCPremium(){
         return cy.get('[href="/premium"]');
     }
@@ -226,6 +246,26 @@ class sideMenu {
     validateFooterButton(button, link){
         button.should('be.visible')
         .and('have.attr', 'target', '_blank')
+        .and('have.attr', 'href', link);
+    }
+
+    validateUserLoggedIn(){
+        const button = this.buttonUserMenu();
+        button.should('be.visible');
+    }
+
+    validateUserLoggedOut(){
+        const button = this.buttonUserMenu();
+        button.should('not.be.visible');
+    }
+
+    validateAccountInfo(){
+        cy.get('.container > .bg-panelColor').should('be.visible');
+    }
+
+    validateAccountSupportEmail(email){
+        const link = "mailto:support.eu@truecaller.com";
+        email.should('be.visible')
         .and('have.attr', 'href', link);
     }
 }
