@@ -7,7 +7,7 @@ describe("Homepage tests", () => {
             home.visitURL();
             home.clearSessionStorage();
             home.setupGoogleUser();
-            home.visitURL();
+            home.reload();
             home.sideMenu.validateUserLoggedIn();
         })
 
@@ -17,7 +17,7 @@ describe("Homepage tests", () => {
             home.visitURL();
             home.clearSessionStorage();
             home.setupGoogleUser();
-            home.visitURL();
+            home.reload();
             home.sideMenu.validateUserLoggedIn();
             home.clickElement(home.sideMenu.buttonUserMenu());
             home.clickElement(home.sideMenu.buttonUserAccountPrivacy());
@@ -39,7 +39,7 @@ describe("Homepage tests", () => {
             home.visitURL();
             home.clearSessionStorage();
             home.setupGoogleUser();
-            home.visitURL();
+            home.reload();
             home.sideMenu.validateUserLoggedIn();
             home.clickElement(home.sideMenu.buttonUserMenu());
             home.clickElement(home.sideMenu.buttonUserLogout());
@@ -51,7 +51,7 @@ describe("Homepage tests", () => {
             home.visitURL();
             home.clearSessionStorage();
             home.setupGoogleUser();
-            home.visitURL();
+            home.reload();
             home.sideMenu.validateUserLoggedIn();
             home.enterSearchNumber("+37128338009");
             home.clickElement(home.buttonSearch());
