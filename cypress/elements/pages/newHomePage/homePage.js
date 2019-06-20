@@ -55,6 +55,10 @@ class homePage{
         element.click({force: true});
     }
 
+    reload(){
+        cy.reload();
+    }
+
     setupGoogleUser(){
         cy.window().then(win => {
             localStorage.setItem('tc-store', '{"redirect":null,"overrides":{},"history":[{"name":"profile","params":{"countryCode":"lv","q":"28338009"}}],"showSpinner":false,"showDarkTheme":false,"showCookieMessage":false,"geoIpCountry":"lv","searchCountry":"lv","signInCountry":"lv","unlistCountry":"lv","user":{"name":"Cypress Automation","email":"cypresstruecaller@gmail.com","image":"https://lh5.googleusercontent.com/-3H-92sybLgA/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rfZipxBVK6rh5icI1sUbF9NMgEGlg/mo/photo.jpg","accessToken":"a1w1W------wudVhiz1lYcSm-UX8FWzRkmRMcLbWu8k-P3GNP2WwXmkmS5-c2Cg3","enhancedSearch":true}}');
